@@ -4,7 +4,7 @@ import Image from "next/image";
 export function Header() {
   return (
     <header className="">
-      <div className="h-[72px] bg-carbonBlue flex items-center justify-between">
+      <div className="h-[72px] bg-carbon_blue flex items-center justify-between">
         <Logo />
         <div className="flex h-full">
           <ThemeSwitchBtn />
@@ -18,7 +18,7 @@ export function Header() {
 
 function DividerLine() {
   return (
-    <div className="border-l border-blueIndigo h-full ml-6"></div>
+    <div className="border-l border-blue_indigo h-full ml-6"></div>
   )
 }
 

@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spartan.variable} bg-baiPearl text-ruinedSmores`}>
+    <html lang="en" className={`${spartan.variable} bg-zhenzhubai_pearl text-ruined_smores`}>
       <body>{children}</body>
     </html>
   )

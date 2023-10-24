@@ -5,10 +5,10 @@ const button = cva("button", {
   variants: {
     intent: {
       primary: [
-        "bg-venetianNights",
+        "bg-venetian_nights",
         "text-white",
         "border-transparent",
-        "hover:bg-forgottenPurple",
+        "hover:bg-forgotten_purple",
         
       ],
       secondary: [

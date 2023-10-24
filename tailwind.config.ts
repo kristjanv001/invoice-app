@@ -12,13 +12,27 @@ const config: Config = {
         sans: ['var(--font-spartan)'],
       },
       colors: {
-        "carbonBlue": "#373B53", // header bg
-        "blueIndigo": "#494E6E", // header divider
-        "baiPearl": "#F8F8FB", // bg light
-        "ruinedSmores": "#0C0E16", // text
-        "impression": "#888EB0", // label text
-        "venetianNights": "#7C5DFA", // primary btn bg
-        "forgottenPurple": "#9277FF" // primargy btn bg hover
+        // header bg
+        "carbon_blue": "#373B53",
+
+        // header divider
+        "blue_indigo": "#494E6E",
+
+
+
+        // design system
+        "venetian_nights": "#7C5DFA",
+        "forgotten_purple": "#9277FF",
+        "kon": "#1E2139",
+        "royal_curtsy": "#252945",
+        "stoic_white": "#DFE3FA",
+        "purple_impression": "#888EB0",
+        "true_lavender": "#7E88C3",
+        "ruined_smores": "#0C0E16",
+        "khmer_curry": "#EC5757",
+        "american_pink": "#FF9797",
+        "zhenzhubai_pearl": "#F8F8FB",
+        "river_styx": "#141625",
       }
     },
   },
