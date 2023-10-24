@@ -10,6 +10,16 @@ const spartan = localFont({
       style: 'normal',
     },
     {
+      path: '../public/fonts/Spartan-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Spartan-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
       path: '../public/fonts/Spartan-Bold.ttf',
       weight: '700',
       style: 'normal',
@@ -29,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spartan.variable}`}>
+    <html lang="en" className={`${spartan.variable} bg-baiPearl text-ruinedSmores`}>
       <body>{children}</body>
     </html>
   )
