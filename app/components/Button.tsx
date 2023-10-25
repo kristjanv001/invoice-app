@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { ButtonHTMLAttributes } from "react";
 
 
 const button = cva([
@@ -11,19 +10,18 @@ const button = cva([
   "leading-none", 
   "flex", 
   "items-center", 
-  "justify-center",
-], 
-{
-  variants: {
-    intent: {
-      primary: ["bg-venetian_nights text-white hover:bg-forgotten_purple"],
-      secondary: [],
-      danger: []
+  "justify-center"], 
+  {
+    variants: {
+      intent: {
+        primary: ["bg-venetian_nights text-white hover:bg-forgotten_purple"],
+        secondary: [],
+        danger: []
+      }
     }
-  }
 })
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>, 
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, 
   VariantProps<typeof button> {}
 
 export function Button({className, intent, ...props}: ButtonProps) {

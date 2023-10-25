@@ -20,7 +20,7 @@ const config: Config = {
 
         // labels
         "dark_shamrock": "#33D69F",
-
+        "princeton_orange": "#FF8F00",
 
         // design system
         "venetian_nights": "#7C5DFA",

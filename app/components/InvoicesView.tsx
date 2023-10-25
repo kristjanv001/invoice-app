@@ -1,18 +1,52 @@
 import { InvoicesHeader } from "./InvoicesHeader"
+import { cva, type VariantProps } from "class-variance-authority";
 
 
-function Label() {
+const labelContainer = cva(["h-10 w-[104px] flex justify-center items-center bg-opacity-20 rounded-md"], {
+  variants: {
+    intent: {
+      paid: ["bg-dark_shamrock"],
+      pending: ["bg-princeton_orange"],
+      draft: ["bg-carbon_blue"],
+    },
+  },
+});
+
+const labelText = cva(["text-xs font-bold mt-0.5 ml-2"], {
+  variants: {
+    intent: {
+      paid: ["text-dark_shamrock"],
+      pending: ["text-princeton_orange"],
+      draft: []
+    }
+  }
+})
+
+const labelOval = cva(["h-2 w-2 rounded-full"], {
+  variants: {
+    intent: {
+      paid: ["bg-dark_shamrock"],
+      pending: ["bg-princeton_orange"],
+      draft: []
+    }
+  }
+})
+
+interface LabelProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof labelContainer>, VariantProps<typeof labelText>, VariantProps<typeof labelOval> {}
+
+export function Label({className, intent, ...props}: LabelProps) {
   return (
-    <div className="h-10 w-[104px] bg-dark_shamrock flex justify-center items-center bg-opacity-20 rounded-md">
-      <div className="h-2 w-2 rounded-full bg-dark_shamrock"></div>
-      <span className="text-xs font-bold text-dark_shamrock mt-[2px] ml-2">Paid</span>
+    <div className={labelContainer({className, intent})} {...props}>
+      <div className={labelOval({intent})}></div>
+      <span className={labelText({intent})}>Paid</span>
     </div>
   )
 }
 
+
 function InvoiceCard() {
   return (
-    <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mt-8 p-6">
+    <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6">
 
       <div className="grid grid-cols-2">
         <div className="col-span-1">
@@ -37,7 +71,7 @@ function InvoiceCard() {
               <span className="text-purple_impression font-medium text-xs leading-4">Jensen Huang</span>
             </div>
             <div className="row-span-1 h-full flex justify-end items-end">
-              <Label />
+              <Label intent="paid" />
             </div>
           </div>
         </div>
@@ -50,13 +84,12 @@ function InvoiceCard() {
 
 function InvoicesList() {
   return (
-    <div>
-      <ul>
-        <li>
-          <InvoiceCard />
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <InvoiceCard />
+        <InvoiceCard />
+      </li>
+    </ul>
   )
 }
 
