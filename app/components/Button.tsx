@@ -1,46 +1,36 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import { ButtonHTMLAttributes } from "react";
 
 
-const button = cva("button", {
+const button = cva([
+  "border-transparent", 
+  "tracking-[-0.25px]", 
+  "rounded-3xl", 
+  "font-semibold", 
+  "text-xs", 
+  "leading-none", 
+  "flex", 
+  "items-center", 
+  "justify-center",
+], 
+{
   variants: {
     intent: {
-      primary: [
-        "bg-venetian_nights",
-        "text-white",
-        "border-transparent",
-        "hover:bg-forgotten_purple",
-        
-      ],
-      secondary: [
-        "bg-white",
-        "text-gray-800",
-        "border-gray-400",
-        "hover:bg-gray-100",
-      ],
-    },
-    size: {
-      small: [""],
-      medium: [""],
-    },
-  },
-  compoundVariants: [
-    { 
-      intent: "primary", 
-      size: "medium", 
-      class: "rounded-3xl text-xs font-semibold leading-4 tracking-[-0.25px] p-2" 
+      primary: ["bg-venetian_nights text-white hover:bg-forgotten_purple"],
+      secondary: [],
+      danger: []
     }
-  ],
-  defaultVariants: {
-    intent: "primary",
-    size: "medium",
-  },
-});
+  }
+})
 
-export interface ButtonProps extends 
-  React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof button> {}
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>, 
+  VariantProps<typeof button> {}
 
-export function Button({ className, intent, size, ...props }: ButtonProps) {
+export function Button({className, intent, ...props}: ButtonProps) {
   return (
-    <button className={button({ intent, size, className })} {...props} />
-  );
+    <button 
+      className={button({className, intent})} 
+      {...props}
+    />
+  )
 }

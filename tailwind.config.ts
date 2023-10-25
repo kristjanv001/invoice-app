@@ -18,6 +18,8 @@ const config: Config = {
         // header divider
         "blue_indigo": "#494E6E",
 
+        // labels
+        "dark_shamrock": "#33D69F",
 
 
         // design system
