@@ -32,7 +32,7 @@ export function InvoicesHeader() {
     <div className="h-full flex justify-between mb-8">
       <div className="flex flex-col">
         <h1 className="text-xl font-semibold leading-normal tracking-[-0.625px]">Invoices</h1>
-        <span className="text-impression text-xs font-medium leading-4 tracking-[-0.25px]">7 Invoices</span>
+        <span className="text-purple_impression text-xs font-medium leading-4 tracking-[-0.25px]">7 Invoices</span>
       </div>
       <div className="flex items-center justify-center">
         <FilterInvoicesBtn />
