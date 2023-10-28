@@ -1,8 +1,7 @@
 import { promises as fs } from 'fs';
-
 import { InvoicesHeader } from "./InvoicesHeader"
 import { InvoicesList } from "./InvoicesList";
-import { Invoice } from "../interfaces/invoice";
+
 
 async function getLocalData(path: string) {
   const file = await fs.readFile(process.cwd() + path, 'utf8');

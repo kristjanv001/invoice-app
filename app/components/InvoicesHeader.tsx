@@ -1,4 +1,7 @@
+"use client";
 import { Button } from "./Button"
+import { Menu, Popover } from '@headlessui/react'
+import { useState } from "react";
 
 
 function NewInvoiceBtn() {
@@ -16,14 +19,76 @@ function NewInvoiceBtn() {
   )
 }
 
-function FilterInvoicesBtn() {
+interface FilterCheckBoxProps {
+  filterBy: "Draft" | "Pending" | "Paid"
+}
+function FilterCheckBox({filterBy}: FilterCheckBoxProps) {
+  const [checked, setChecked] = useState(false);
+
+  function handleCheckBoxChange(e: any) {
+    console.log(e);
+
+    setChecked(!checked);
+  }
+
   return (
-    <button className="flex justify-center items-center">
-      <span className="font-bold text-xs leading-4 tracking-[-0.25px] mr-2">Filter</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
-        <path d="M1 1L5.2279 5.2279L9.4558 1" stroke="#7C5DFA" strokeWidth="2"/>
-      </svg>
-    </button>
+    <div className="mb-4 last:mb-0">
+      <input 
+        className="
+          bg-stoic_white border-transparent hover:border-forgotten_purple 
+          text-venetian_nights focus:ring-forgotten_purple 
+          mr-3 rounded-sm cursor-pointer p-2 duration-200"
+        type="checkbox" 
+        id={filterBy}
+        name={filterBy}
+        onChange={handleCheckBoxChange}
+        checked={checked}
+      />
+      <label 
+        className="text-xs mt-0.5 font-bold tracking-[-0.25px]"
+        htmlFor={filterBy}>
+          {filterBy}
+      </label>
+    </div>
+  )
+}
+
+function FilterInvoicesBtn() {
+  const [isRotated, setIsRotated] = useState(false);
+
+  return (
+    <>
+      <Popover as="div" className="relative inline-block text-left">
+        <Popover.Button 
+          onClick={() => setIsRotated(!isRotated)}
+          className="flex justify-center items-center px-2 py-2"
+        >
+          <span className="font-bold text-xs leading-none mt-0.5 tracking-[-0.25px] mr-2">
+            Filter
+          </span>
+          <svg
+            className={`${isRotated && "rotate-180"} duration-200`}
+            xmlns="http://www.w3.org/2000/svg" 
+            width="10" 
+            height="7" 
+            viewBox="0 0 10 7" 
+            fill="none"
+          >
+            <path d="M1 1L5.2279 5.2279L9.4558 1" stroke="#7C5DFA" strokeWidth="2"/>
+          </svg>
+        </Popover.Button>
+        <Popover.Panel className="absolute right-0 mt-6 min-w-full w-48 origin-top-right 
+            rounded-lg bg-white 
+            shadow-xl ring-1 ring-black/5 focus:outline-none 
+            flex flex-col p-6">
+          <div className="flex flex-col content-center">
+            <FilterCheckBox filterBy="Draft" />
+            <FilterCheckBox filterBy="Pending" />
+            <FilterCheckBox filterBy="Paid" />
+          </div>
+        </Popover.Panel>
+      </Popover>
+    </>
   )
 }
 
@@ -31,8 +96,13 @@ export function InvoicesHeader() {
   return (
     <div className="h-full flex justify-between mb-8">
       <div className="flex flex-col">
-        <h1 className="text-xl font-semibold leading-normal tracking-[-0.625px]">Invoices</h1>
-        <span className="text-purple_impression text-xs font-medium leading-4 tracking-[-0.25px]">7 Invoices</span>
+        <h1 className="text-xl font-semibold leading-normal tracking-[-0.625px]">
+          Invoices
+        </h1>
+        <span 
+          className="text-purple_impression text-xs font-medium leading-4 tracking-[-0.25px]">
+            7 Invoices
+        </span>
       </div>
       <div className="flex items-center justify-center">
         <FilterInvoicesBtn />
