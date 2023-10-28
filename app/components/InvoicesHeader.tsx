@@ -11,7 +11,7 @@ function NewInvoiceBtn() {
           fill="#7C5DFA"
         />
       </svg>
-      <span className="ml-2">New</span>
+      <span className="ml-2 mt-0.5">New</span>
     </Button>
   )
 }

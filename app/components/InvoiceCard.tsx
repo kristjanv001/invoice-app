@@ -30,7 +30,7 @@ const labelContainer = cva(["h-10 w-[104px] flex justify-center items-center bg-
   },
 });
 
-const labelText = cva(["text-xs font-bold mt-0.5 ml-2"], {
+const labelText = cva(["text-xs font-bold mt-0.5 ml-2 tracking-[-0.25px]"], {
   variants: {
     intent: {
       paid: ["text-dark_shamrock"],
@@ -56,7 +56,7 @@ export function Label({className, intent, ...props}: LabelProps) {
   return (
     <div className={labelContainer({className, intent})} {...props}>
       <div className={labelOval({intent})}></div>
-      <span className={labelText({intent})}>
+      <span className={labelText({intent}) }>
         {intent === "paid" && "Paid"}
         {intent === "pending" && "Pending"}
         {intent === "draft" && "Draft"}
@@ -71,7 +71,7 @@ interface InvoiceCardProps {
 
 export function InvoiceCard({invoice}: InvoiceCardProps) {
   return (
-    <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6">
+    <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6 hover:border-venetian_nights focus:ring focus:ring-forgotten_purple cursor-pointer duration-200">
 
       <div className="grid grid-cols-2">
         <div className="col-span-1">
