@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-
+import { Invoice } from "../interfaces/invoice";
 
 const labelContainer = cva(["h-10 w-[104px] flex justify-center items-center bg-opacity-20 rounded-md"], {
   variants: {
@@ -26,7 +26,7 @@ const labelOval = cva(["h-2 w-2 rounded-full"], {
     intent: {
       paid: ["bg-dark_shamrock"],
       pending: ["bg-princeton_orange"],
-      draft: []
+      draft: ["bg-carbon_blue"]
     }
   }
 })
@@ -46,9 +46,9 @@ export function Label({className, intent, ...props}: LabelProps) {
 }
 
 interface InvoiceCardProps {
-  intent: "paid" | "pending" | "draft"
+  invoice: Invoice
 }
-export function InvoiceCard({intent}: InvoiceCardProps) {
+export function InvoiceCard({invoice}: InvoiceCardProps) {
   return (
     <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6">
 
@@ -57,14 +57,14 @@ export function InvoiceCard({intent}: InvoiceCardProps) {
           <div className="grid grid-rows-4">
             <div className="row-span-2 font-bold text-xs tracking-[-0.25px] leading-4 justify-end">
               <span className="text-true_lavender">#</span>
-              <span>RT3080</span>
+              <span>{invoice.id}</span>
             </div>
             <div className="row-span-1 text-xs font-medium leading-4 tracking-[-0.25px]">
               <span className="text-purple_impression mr-2">Due</span>
-              <span className="text-true_lavender">19 Aug 2021</span>
+              <span className="text-true_lavender">{invoice.paymentDue}</span>
             </div>
             <div className="row-span-1 flex items-end">
-                <span className="text-base font-bold leading-none mt-1">£ 1,800.90</span>
+                <span className="text-base font-bold leading-none mt-1">{invoice.total}</span>
               </div>
           </div>
         </div>
@@ -72,10 +72,10 @@ export function InvoiceCard({intent}: InvoiceCardProps) {
         <div className="col-span-1">
           <div className="grid grid-rows-2 h-full">
             <div className="row-span-1 h-full flex items-start justify-end">
-              <span className="text-purple_impression font-medium text-xs leading-4">Jensen Huang</span>
+              <span className="text-purple_impression font-medium text-xs leading-4">{invoice.clientName}</span>
             </div>
             <div className="row-span-1 h-full flex justify-end items-end">
-              <Label intent={intent} />
+              <Label intent={invoice.status} />
             </div>
           </div>
         </div>

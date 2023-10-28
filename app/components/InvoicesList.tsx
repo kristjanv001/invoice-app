@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
 import { InvoiceCard } from "./InvoiceCard";
+import { Invoice } from "../interfaces/invoice";
 
-// 🚀 loop over json data 
 
-export function InvoicesList() {
+interface InvoicesListProps { invoices: Invoice[] }
+export function InvoicesList({invoices}: InvoicesListProps) {
   return (
     <ul>
-      <li>
-        <InvoiceCard intent="pending" />
-        <InvoiceCard intent="paid" />
-      </li>
+      {invoices.map((invoice) => {
+          return (
+            <li>
+              <InvoiceCard invoice={invoice} />
+            </li>
+          )
+        })}
     </ul>
   )
 }
