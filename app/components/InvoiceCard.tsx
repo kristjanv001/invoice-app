@@ -1,6 +1,25 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Invoice } from "../interfaces/invoice";
 
+
+function formatDate(inputDate: string) {
+  const date = new Date(inputDate);
+
+  return `${date.toLocaleDateString(
+    'en-GB', 
+    { year: 'numeric', month: 'short', day: '2-digit' }
+  )}`;
+}
+
+function formatCurrency(amount: number) {
+  const currencyFormatter = new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: 'GBP',
+    minimumFractionDigits: 2,
+  });
+  return currencyFormatter.format(amount);
+}
+
 const labelContainer = cva(["h-10 w-[104px] flex justify-center items-center bg-opacity-20 rounded-md"], {
   variants: {
     intent: {
@@ -32,6 +51,7 @@ const labelOval = cva(["h-2 w-2 rounded-full"], {
 })
 
 interface LabelProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof labelContainer>, VariantProps<typeof labelText>, VariantProps<typeof labelOval> {}
+
 export function Label({className, intent, ...props}: LabelProps) {
   return (
     <div className={labelContainer({className, intent})} {...props}>
@@ -48,6 +68,7 @@ export function Label({className, intent, ...props}: LabelProps) {
 interface InvoiceCardProps {
   invoice: Invoice
 }
+
 export function InvoiceCard({invoice}: InvoiceCardProps) {
   return (
     <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6">
@@ -61,10 +82,10 @@ export function InvoiceCard({invoice}: InvoiceCardProps) {
             </div>
             <div className="row-span-1 text-xs font-medium leading-4 tracking-[-0.25px]">
               <span className="text-purple_impression mr-2">Due</span>
-              <span className="text-true_lavender">{invoice.paymentDue}</span>
+              <span className="text-true_lavender">{formatDate(invoice.paymentDue)}</span>
             </div>
             <div className="row-span-1 flex items-end">
-                <span className="text-base font-bold leading-none mt-1">{invoice.total}</span>
+                <span className="text-base font-bold leading-none mt-1">{formatCurrency(invoice.total)}</span>
               </div>
           </div>
         </div>

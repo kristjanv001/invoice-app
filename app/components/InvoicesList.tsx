@@ -8,7 +8,7 @@ export function InvoicesList({invoices}: InvoicesListProps) {
     <ul>
       {invoices.map((invoice) => {
           return (
-            <li>
+            <li key={invoice.id}>
               <InvoiceCard invoice={invoice} />
             </li>
           )
