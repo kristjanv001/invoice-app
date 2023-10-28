@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 
 const button = cva([
+  "duration-200",
   "border-transparent", 
   "tracking-[-0.25px]", 
   "rounded-3xl", 

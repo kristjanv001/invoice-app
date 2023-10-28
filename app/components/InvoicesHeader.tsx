@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "./Button"
-import { Menu, Popover } from '@headlessui/react'
-import { useState } from "react";
+import { Popover, Transition } from '@headlessui/react'
+import { Fragment, useState } from "react";
 
 
 function NewInvoiceBtn() {
@@ -77,16 +77,26 @@ function FilterInvoicesBtn() {
             <path d="M1 1L5.2279 5.2279L9.4558 1" stroke="#7C5DFA" strokeWidth="2"/>
           </svg>
         </Popover.Button>
-        <Popover.Panel className="absolute right-0 mt-6 min-w-full w-48 origin-top-right 
-            rounded-lg bg-white 
-            shadow-xl ring-1 ring-black/5 focus:outline-none 
-            flex flex-col p-6">
-          <div className="flex flex-col content-center">
-            <FilterCheckBox filterBy="Draft" />
-            <FilterCheckBox filterBy="Pending" />
-            <FilterCheckBox filterBy="Paid" />
-          </div>
-        </Popover.Panel>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-200"
+          enterFrom="opacity-0 translate-y-1"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition ease-in duration-150"
+          leaveFrom="opacity-100 translate-y-0"
+          leaveTo="opacity-0 translate-y-1"
+        >
+          <Popover.Panel className="absolute right-0 mt-6 min-w-full w-48 origin-top-right 
+              rounded-lg bg-white 
+              shadow-xl ring-1 ring-black/5 focus:outline-none 
+              flex flex-col p-6">
+            <div className="flex flex-col content-center">
+              <FilterCheckBox filterBy="Draft" />
+              <FilterCheckBox filterBy="Pending" />
+              <FilterCheckBox filterBy="Paid" />
+            </div>
+          </Popover.Panel>
+        </Transition>
       </Popover>
     </>
   )
