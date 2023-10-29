@@ -27,6 +27,7 @@ export function InvoicesView() {
     <div className="h-full w-full mt-8 px-6">
 
       <InvoicesHeader
+        amount={invoices.length}
         checked={checked} 
         handleCheckboxChange={handleCheckboxChange}
       />

@@ -4,7 +4,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { CheckedState } from "../interfaces/checked";
 import { Status } from "../interfaces/invoice";
-
+import { capitalize } from "../utils/capitalize";
 
 function NewInvoiceBtn() {
   return (
@@ -50,7 +50,7 @@ function FilterCheckBox(props: FilterCheckBoxProps) {
         className="text-xs mt-0.5 font-bold tracking-[-0.25px]"
         htmlFor={filterBy}
       >
-        {filterBy}
+        {capitalize(filterBy)}
       </label>
     </div>
   );
@@ -124,6 +124,7 @@ function FilterBtn(props: FilterBtnProps) {
 }
 
 export function InvoicesHeader(props: InvoicesHeaderProps) {
+  const { amount } = props;
   return (
     <div className="h-full flex justify-between mb-8">
       <div className="flex flex-col">
@@ -131,7 +132,7 @@ export function InvoicesHeader(props: InvoicesHeaderProps) {
           Invoices
         </h1>
         <span className="text-purple_impression text-xs font-medium leading-4 tracking-[-0.25px]">
-          7 Invoices
+          {amount} Invoices
         </span>
       </div>
       <div className="flex items-center justify-center">
@@ -153,6 +154,7 @@ interface FilterCheckBoxProps {
 interface InvoicesHeaderProps {
   checked: CheckedState;
   handleCheckboxChange: (filterBy: Status) => void;
+  amount: number
 }
 
 interface FilterBtnProps extends InvoicesHeaderProps {}
