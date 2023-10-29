@@ -6,7 +6,7 @@ export interface Invoice {
   paymentTerms: number,
   clientName: string,
   clientEmail: string,
-  status: "paid" | "pending" | "draft",
+  status: Status,
   senderAddress: {
     street: string,
     city: string,
@@ -29,3 +29,6 @@ interface Item {
   price: number,
   total: number
 }
+
+export type Status = "paid" | "pending" | "draft";
+

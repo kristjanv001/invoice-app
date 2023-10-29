@@ -1,12 +1,18 @@
 import { InvoiceCard } from "./InvoiceCard";
 import { Invoice } from "../interfaces/invoice";
+import { CheckedState } from "../interfaces/checked";
 
 
-interface InvoicesListProps { invoices: Invoice[] }
-export function InvoicesList({invoices}: InvoicesListProps) {
+export function InvoicesList(props: InvoicesListProps) {
+  const { invoices, checked } = props;
+
+  const filteredInvoices = invoices.filter((invoice) => {
+    return checked[invoice.status];
+  });
+
   return (
     <ul className="mb-24">
-      {invoices.map((invoice) => {
+      {filteredInvoices.map((invoice) => {
           return (
             <li key={invoice.id}>
               <InvoiceCard invoice={invoice} />
@@ -15,4 +21,9 @@ export function InvoicesList({invoices}: InvoicesListProps) {
         })}
     </ul>
   )
+}
+
+interface InvoicesListProps { 
+  invoices: Invoice[], 
+  checked: CheckedState,
 }
