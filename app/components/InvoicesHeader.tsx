@@ -126,13 +126,15 @@ function FilterBtn(props: FilterBtnProps) {
 export function InvoicesHeader(props: InvoicesHeaderProps) {
   const { amount } = props;
   return (
-    <div className="h-full flex justify-between mb-8">
+    <div className="h-full flex justify-between">
       <div className="flex flex-col">
         <h1 className="text-xl font-semibold leading-normal tracking-[-0.625px]">
           Invoices
         </h1>
         <span className="text-purple_impression text-xs font-medium leading-4 tracking-[-0.25px]">
-          {amount} Invoices
+          {amount === 0 && "No invoices"}
+          {amount === 1 && "1 invoice"}
+          {amount > 1 && `${amount} invoices` }
         </span>
       </div>
       <div className="flex items-center justify-center">

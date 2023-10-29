@@ -8,7 +8,7 @@ import { CheckedState } from '../interfaces/checked';
 import { Status } from '../interfaces/invoice';
 
 export function InvoicesView() {
-  const [invoices, setInvoices] = useState<Invoice[]>(INVOICES);
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
 
   const [checked, setChecked] = useState<CheckedState>({
     paid: true,
