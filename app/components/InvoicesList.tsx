@@ -27,8 +27,15 @@ export function InvoicesList(props: InvoicesListProps) {
       <div className="mt-24 flex flex-col justify-center items-center">
         <img src="assets/illustration-empty.svg" alt="" />
         <div className="px-14 text-center">
-          <p className="font-bold text-xl mt-10 mb-6 tracking-[-0.625px]">There is nothing here</p>
-          <p className="text-xs text-purple_impression tracking-[-0.25px] leading-4 font-medium">Create an invoice by clicking the <span className="font-bold">New</span> button and get started</p>
+          <p 
+            className="font-bold text-xl mt-10 mb-6 tracking-[-0.625px]">
+              There is nothing here
+          </p>
+          <p 
+            className="text-xs text-purple_impression tracking-[-0.25px] leading-4 font-medium">
+              Create an invoice by clicking the <span className="font-bold">New</span>{" "}  
+              button and get started
+          </p>
         </div>
       </div>
       }

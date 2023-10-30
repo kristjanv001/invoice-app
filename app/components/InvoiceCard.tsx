@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Invoice } from "../interfaces/invoice";
+import Link from "next/link";
 
 
 function formatDate(inputDate: string) {
@@ -69,9 +70,19 @@ interface InvoiceCardProps {
   invoice: Invoice
 }
 
+{/* <Link href={`/blog/${post.slug}`}>{post.title}</Link> */}
+
+// http://localhost:3000/dashboard/view/RT3080
+
 export function InvoiceCard({invoice}: InvoiceCardProps) {
   return (
     <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6 hover:border-venetian_nights focus:ring focus:ring-forgotten_purple cursor-pointer duration-200">
+
+      <Link 
+        className="bg-sky-200 p-2" 
+        href={`/dashboard/view/${invoice.id}`}>
+          view
+      </Link>
 
       <div className="grid grid-cols-2">
         <div className="col-span-1">
