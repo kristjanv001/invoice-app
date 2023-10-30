@@ -1,6 +1,9 @@
-export default function Page() {
+export default function Page({ params }: { params: { id: string } }) { 
   return (
-    <p>Invoice with an id of</p>
+    <div>
+      
+      <p>hello</p>
+      
+    </div>
   )
 }
-
