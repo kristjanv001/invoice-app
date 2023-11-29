@@ -1,11 +1,14 @@
 import Image from "next/image";
+import Link from 'next/link'
 
 
 export function Header() {
   return (
     <header className="">
       <div className="h-[72px] bg-carbon_blue flex items-center justify-between">
-        <Logo />
+        <Link href="/dashboard">
+          <Logo />
+        </Link>
         <div className="flex h-full">
           <ThemeSwitchBtn />
           <DividerLine />

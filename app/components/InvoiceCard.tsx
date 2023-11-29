@@ -1,65 +1,15 @@
-import { cva, type VariantProps } from "class-variance-authority";
+import { InvoiceLabel } from "./InvoiceLabel";
 import { Invoice } from "../interfaces/invoice";
 import Link from "next/link";
 import { formatCurrency } from "../utils/currency";
 import { formatDate } from "../utils/date";
 
 
-const labelContainer = cva(
-  ["h-10 w-[104px] flex justify-center items-center bg-opacity-20 rounded-md"],
-  {
-    variants: {
-      intent: {
-        paid: ["bg-dark_shamrock"],
-        pending: ["bg-princeton_orange"],
-        draft: ["bg-carbon_blue"],
-      },
-    },
-  }
-);
-
-const labelText = cva(["text-xs font-bold mt-0.5 ml-2 tracking-[-0.25px]"], {
-  variants: {
-    intent: {
-      paid: ["text-dark_shamrock"],
-      pending: ["text-princeton_orange"],
-      draft: [],
-    },
-  },
-});
-
-const labelOval = cva(["h-2 w-2 rounded-full"], {
-  variants: {
-    intent: {
-      paid: ["bg-dark_shamrock"],
-      pending: ["bg-princeton_orange"],
-      draft: ["bg-carbon_blue"],
-    },
-  },
-});
-
-interface LabelProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof labelContainer>,
-    VariantProps<typeof labelText>,
-    VariantProps<typeof labelOval> {}
-
-export function Label({ className, intent, ...props }: LabelProps) {
-  return (
-    <div className={labelContainer({ className, intent })} {...props}>
-      <div className={labelOval({ intent })}></div>
-      <span className={labelText({ intent })}>
-        {intent === "paid" && "Paid"}
-        {intent === "pending" && "Pending"}
-        {intent === "draft" && "Draft"}
-      </span>
-    </div>
-  );
-}
-
 interface InvoiceCardProps {
   invoice: Invoice;
 }
+
+// <Link href={`/developers/developer?name=${mentor.name}&picture=${mentor.picture}`}>
 
 export function InvoiceCard({ invoice }: InvoiceCardProps) {
   return (
@@ -94,7 +44,7 @@ export function InvoiceCard({ invoice }: InvoiceCardProps) {
                 </span>
               </div>
               <div className="row-span-1 h-full flex justify-end items-end">
-                <Label intent={invoice.status} />
+                <InvoiceLabel intent={invoice.status} />
               </div>
             </div>
           </div>
