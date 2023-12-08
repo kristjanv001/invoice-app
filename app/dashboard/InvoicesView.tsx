@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { InvoicesHeader } from "./InvoicesHeader"
+import { InvoicesHeader } from "./view/InvoicesHeader"
 import { InvoicesList } from "./InvoicesList";
 import { INVOICES } from '../data';
 import { Invoice } from '../interfaces/invoice';

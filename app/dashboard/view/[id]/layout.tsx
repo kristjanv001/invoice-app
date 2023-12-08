@@ -8,14 +8,12 @@ export default function InvoiceCRUDLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
-
+    <div>
       <div className="flex items-center my-8 px-6">
-        <ChevronLeftIcon className="h-4 w-4 text-venetian_nights font-bold" />
-        <Link href="/dashboard" className='leading-none mt-0.5 ml-2 font-bold text-xs'>Go back</Link>
-      </div>
- 
+          <ChevronLeftIcon className="h-4 w-4 text-venetian_nights font-bold" />
+          <Link href="/dashboard" className='leading-none mt-[3px] ml-2 font-bold text-xs'>Go back</Link>
+      </div> 
       {children}
-    </section>
+    </div>
   )
 }

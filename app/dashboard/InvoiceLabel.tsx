@@ -33,13 +33,13 @@ const labelOval = cva(["h-2 w-2 rounded-full"], {
   },
 });
 
-interface LabelProps
+interface Props
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof labelContainer>,
     VariantProps<typeof labelText>,
     VariantProps<typeof labelOval> {}
 
-export function InvoiceLabel({ className, intent, ...props }: LabelProps) {
+export function InvoiceLabel({ className, intent, ...props }: Props) {
   return (
     <div className={labelContainer({ className, intent })} {...props}>
       <div className={labelOval({ intent })}></div>

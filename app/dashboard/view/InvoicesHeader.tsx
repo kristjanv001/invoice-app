@@ -1,10 +1,10 @@
 "use client";
-import { Button } from "./Button";
+import { Button } from "../../components/Button";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { CheckedState } from "../interfaces/checked";
-import { Status } from "../interfaces/invoice";
-import { capitalize } from "../utils/capitalize";
+import { CheckedState } from "../../interfaces/checked";
+import { Status } from "../../interfaces/invoice";
+import { capitalize } from "../../utils/capitalize";
 
 function NewInvoiceBtn() {
   return (

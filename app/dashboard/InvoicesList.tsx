@@ -2,7 +2,8 @@ import { InvoiceCard } from "./InvoiceCard";
 import { Invoice } from "../interfaces/invoice";
 import { CheckedState } from "../interfaces/checked";
 
-export function InvoicesList(props: InvoicesListProps) {
+
+export function InvoicesList(props: Props) {
   const { invoices, checked } = props;
 
   const filteredInvoices = invoices.filter((invoice) => {
@@ -43,7 +44,7 @@ export function InvoicesList(props: InvoicesListProps) {
   );
 }
 
-interface InvoicesListProps {
+interface Props {
   invoices: Invoice[];
   checked: CheckedState;
 }

@@ -22,10 +22,10 @@ const button = cva([
     }
 })
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, 
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>, 
   VariantProps<typeof button> {}
 
-export function Button({className, intent, ...props}: ButtonProps) {
+export function Button({className, intent, ...props}: Props) {
   return (
     <button className={button({className, intent})} {...props}>
       {props.children}

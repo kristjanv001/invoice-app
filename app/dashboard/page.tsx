@@ -1,4 +1,4 @@
-import { InvoicesView } from "../components/InvoicesView";
+import { InvoicesView } from "./InvoicesView";
 
 export default function Page() {
   return (

@@ -3,25 +3,17 @@ import { Invoice } from "../interfaces/invoice";
 import Link from "next/link";
 import { formatCurrency } from "../utils/currency";
 import { formatDate } from "../utils/date";
+import { InvoiceId } from "../components/InvoiceId";
 
 
-interface InvoiceCardProps {
-  invoice: Invoice;
-}
-
-// <Link href={`/developers/developer?name=${mentor.name}&picture=${mentor.picture}`}>
-
-export function InvoiceCard({ invoice }: InvoiceCardProps) {
+export function InvoiceCard({ invoice }: Props) {
   return (
     <Link href={`/dashboard/view/${invoice.id}`}>
       <div className="min-h-[134px] bg-white border rounded-lg shadow-sm mb-4 p-6 hover:border-venetian_nights focus:ring focus:ring-forgotten_purple cursor-pointer duration-200">
         <div className="grid grid-cols-2">
           <div className="col-span-1">
             <div className="grid grid-rows-4">
-              <div className="row-span-2 font-bold text-xs tracking-[-0.25px] leading-4 justify-end">
-                <span className="text-true_lavender">#</span>
-                <span>{invoice.id}</span>
-              </div>
+              <InvoiceId id={invoice.id} />
               <div className="row-span-1 text-xs font-medium leading-4 tracking-[-0.25px]">
                 <span className="text-purple_impression mr-2">Due</span>
                 <span className="text-true_lavender">
@@ -52,4 +44,8 @@ export function InvoiceCard({ invoice }: InvoiceCardProps) {
       </div>
     </Link>
   );
+}
+
+interface Props {
+  invoice: Invoice;
 }
