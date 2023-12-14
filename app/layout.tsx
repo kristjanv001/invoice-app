@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import { League_Spartan } from "next/font/google"
 
 const spartan = localFont({
   src: [
@@ -33,13 +34,22 @@ export const metadata: Metadata = {
   description: 'Invoice tracking application.',
 }
 
+//👇 Configure our font object
+const spartan2 = League_Spartan({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spartan.variable} bg-zhenzhubai_pearl text-ruined_smores`}>
+    <html 
+      lang="en" 
+      className={`${spartan.variable} bg-zhenzhubai_pearl text-ruined_smores`}
+    >
       <body>{children}</body>
     </html>
   )
